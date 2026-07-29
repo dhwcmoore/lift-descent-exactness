@@ -1,0 +1,18 @@
+lift-descent-exactness
+Copyright (C) 2026 dhwcmoore
+
+Licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+See the LICENSE file for the full license text.
+
+This repository develops the general mathematics instantiated by two
+sibling repositories under the same license:
+
+  - regional-obstruction-calculus
+    https://github.com/dhwcmoore/regional-obstruction-calculus
+
+  - proof-carrying-exactness
+    https://github.com/dhwcmoore/proof-carrying-exactness
+
+lift-descent-exactness has no code dependency on either repository. The
+relationship is mathematical (they instantiate the theory developed here),
+not architectural.
