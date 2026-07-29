@@ -36,15 +36,15 @@ where $e$ is domain evidence. An admissibility structure can later be
 formalised abstractly as:
 
 - a type of evidence packages $E$;
-- a predicate $\operatorname{Admissible} : E \to \mathrm{Prop}$;
+- a predicate $\mathrm{Admissible} : E \to \mathrm{Prop}$;
 - a type of positive witnesses;
 - a type of negative witnesses;
-- a compiler $\alpha : E \to \operatorname{Instance}$;
+- a compiler $\alpha : E \to \mathrm{Instance}$;
 - a soundness relation explaining what the compiled instance means.
 
 The core linear theory should prove
 
-$$\operatorname{Admissible}(e) \Rightarrow \text{one of Obstructed, Underdetermined, Exact}.$$
+$$\mathrm{Admissible}(e) \Rightarrow \text{one of Obstructed, Underdetermined, Exact}.$$
 
 It should not decide what admissibility means for every domain. That
 keeps geometry and algebra distinct.
@@ -73,7 +73,7 @@ consumers — not in the linear theory itself.
 - cokernel obstruction classes
 - ambiguity spaces
 - claim fibres
-- factorisation through $\operatorname{im} D$
+- factorisation through $\mathrm{im}\,D$
 - canonical exact values
 - dual certificates
 - verdict exclusivity and completeness

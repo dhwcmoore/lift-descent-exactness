@@ -30,10 +30,10 @@ The problem is $Du = r$. Define the repair (realisation) fibre:
 
 $$F_r = D^{-1}(r) = \{ u \in U : Du = r \}.$$
 
-**Empty fibre.** $F_r = \varnothing$, equivalently $r \notin \operatorname{im} D$.
+**Empty fibre.** $F_r = \varnothing$, equivalently $r \notin \mathrm{im}\,D$.
 The obstruction is the quotient class
 
-$$\omega_r = [r] \in \operatorname{coker} D = V / \operatorname{im} D.$$
+$$\omega_r = [r] \in \mathrm{coker}\,D = V / \mathrm{im}\,D.$$
 
 This is the core situation ROC handles. A **dual separator** is a
 functional $y \in V^{*}$ with $y \circ D = 0$ but $y(r) \neq 0$ — in
@@ -69,55 +69,55 @@ This is the mathematical contribution PCE adds.
 
 ## 4. The two obstruction classes
 
-**Lifting obstruction:** $\omega_r = [r] \in \operatorname{coker} D$.
+**Lifting obstruction:** $\omega_r = [r] \in \mathrm{coker}\,D$.
 Answers: does any underlying realisation exist?
 
 **Descent obstruction.** Consider precomposition:
 
-$$D_W^{*} : \operatorname{Hom}(V, W) \to \operatorname{Hom}(U, W), \qquad D_W^{*}(M) = M \circ D.$$
+$$D_W^{*} : \mathrm{Hom}(V, W) \to \mathrm{Hom}(U, W), \qquad D_W^{*}(M) = M \circ D.$$
 
-$L$ descends through $D$ exactly when $L \in \operatorname{im} D_W^{*}$.
+$L$ descends through $D$ exactly when $L \in \mathrm{im}\,D_W^{*}$.
 Its descent obstruction:
 
-$$\delta_L = [L] \in \operatorname{coker} D_W^{*}.$$
+$$\delta_L = [L] \in \mathrm{coker}\,D_W^{*}.$$
 
 Answers: is the claim determined by the presented residue?
 
-$$\boxed{\text{realisability defect} = [r] \in \operatorname{coker} D}$$
+$$\boxed{\text{realisability defect} = [r] \in \mathrm{coker}\,D}$$
 
-$$\boxed{\text{exactness defect} = [L] \in \operatorname{coker} D_W^{*}}$$
+$$\boxed{\text{exactness defect} = [L] \in \mathrm{coker}\,D_W^{*}}$$
 
 ROC studies the first defect. PCE introduces the second. This repository
 studies their interaction.
 
 ### The descent exact sequence
 
-The descent obstruction class $[L] \in \operatorname{coker} D_W^{*}$ is
+The descent obstruction class $[L] \in \mathrm{coker}\,D_W^{*}$ is
 canonically identified with a more concrete object. Let
 
-$$\rho : \operatorname{Hom}(U, W) \to \operatorname{Hom}(\ker D, W), \qquad \rho(L) = L|_{\ker D}$$
+$$\rho : \mathrm{Hom}(U, W) \to \mathrm{Hom}(\ker D, W), \qquad \rho(L) = L|_{\ker D}$$
 
 be restriction to $\ker D$. In finite-dimensional vector spaces the
 sequence
 
-$$\operatorname{Hom}(V, W) \xrightarrow{D_W^{*}} \operatorname{Hom}(U, W) \xrightarrow{\rho} \operatorname{Hom}(\ker D, W) \longrightarrow 0$$
+$$\mathrm{Hom}(V, W) \xrightarrow{D_W^{*}} \mathrm{Hom}(U, W) \xrightarrow{\rho} \mathrm{Hom}(\ker D, W) \longrightarrow 0$$
 
-is exact: $\ker \rho = \operatorname{im} D_W^{*}$ (a map $L$ restricts to
+is exact: $\ker \rho = \mathrm{im}\,D_W^{*}$ (a map $L$ restricts to
 zero on $\ker D$ exactly when it factors through $D$, by R2 in
 [`THEOREM_LADDER.md`](THEOREM_LADDER.md)), and $\rho$ is surjective
 because any linear map defined on $\ker D$ extends to $U$. Exactness
 gives a canonical isomorphism
 
-$$\operatorname{coker} D_W^{*} \cong \operatorname{Hom}(\ker D, W), \qquad [L] \longmapsto L|_{\ker D}.$$
+$$\mathrm{coker}\,D_W^{*} \cong \mathrm{Hom}(\ker D, W), \qquad [L] \longmapsto L|_{\ker D}.$$
 
 This connects the quotient-based descent obstruction to the
 gauge-direction formulation PCE uses. Three distinct levels of
 information should not be conflated:
 
-1. the **descent obstruction class** $[L] \in \operatorname{coker} D_W^{*}$;
+1. the **descent obstruction class** $[L] \in \mathrm{coker}\,D_W^{*}$;
 2. the **restricted ambiguity map** $L|_{\ker D} : \ker D \to W$,
    canonically isomorphic to (1);
-3. the **ambiguity subspace** $A_{D,L} = \operatorname{im}(L|_{\ker D}) \subseteq W$
+3. the **ambiguity subspace** $A_{D,L} = \mathrm{im}(L|_{\ker D}) \subseteq W$
    (Section 3), the image of (2) — it retains less information than (1)
    and (2), but is sufficient to decide exactness and to measure
    $\dim A_{D,L}$.
@@ -128,10 +128,10 @@ information should not be conflated:
 [`NON_CLAIMS.md`](NON_CLAIMS.md). The intrinsic linear theory has exactly
 three verdicts.
 
-**Obstructed.** $[r] \neq 0$ in $\operatorname{coker} D$, equivalently
+**Obstructed.** $[r] \neq 0$ in $\mathrm{coker}\,D$, equivalently
 $F_r = \varnothing$. No repair exists.
 
-**Underdetermined.** $[r] = 0$ but $[L] \neq 0$ in $\operatorname{coker} D_W^{*}$,
+**Underdetermined.** $[r] = 0$ but $[L] \neq 0$ in $\mathrm{coker}\,D_W^{*}$,
 equivalently $F_r \neq \varnothing$ and $L(\ker D) \neq 0$. Repairs exist,
 but different repairs produce different claimed values.
 
@@ -159,7 +159,7 @@ profile in which the lifting obstruction takes priority: both sectors
 with $[r] \neq 0$ are reported as Obstructed, because there is no repair
 fibre on which to issue an Exact or Underdetermined result:
 
-$$\operatorname{Verdict}([r], [L]) = \begin{cases} \text{Obstructed}, & [r] \neq 0, \\ \text{Underdetermined}, & [r] = 0,\ [L] \neq 0, \\ \text{Exact}, & [r] = 0,\ [L] = 0. \end{cases}$$
+$$\mathrm{Verdict}([r], [L]) = \begin{cases} \text{Obstructed}, & [r] \neq 0, \\ \text{Underdetermined}, & [r] = 0,\ [L] \neq 0, \\ \text{Exact}, & [r] = 0,\ [L] = 0. \end{cases}$$
 
 Collapsing the two $[r] \neq 0$ sectors is legitimate for the operational
 verdict, but the descent defect $[L]$ does not cease to exist merely
@@ -190,7 +190,7 @@ $$\boxed{\text{nonunique construction} + \text{invariance} = \text{canonical exa
 
 ## 7. The intrinsic factorisation is not the matrix $M$
 
-Write $\widetilde D : U \to \operatorname{im} D$ for $D$ with its
+Write $\widetilde D : U \to \mathrm{im}\,D$ for $D$ with its
 codomain restricted to its own image, $\widetilde D(u) = D(u)$. Then
 $\widetilde D$ is surjective and $\ker \widetilde D = \ker D$ — it is the
 actual quotient-like map through which the unique intrinsic descent
@@ -198,21 +198,21 @@ occurs.
 
 The mathematically intrinsic factorisation is not $M : V \to W$ but
 
-$$\overline{L} : \operatorname{im} D \to W,$$
+$$\overline{L} : \mathrm{im}\,D \to W,$$
 
 uniquely determined by $\overline{L}(Du) = L(u)$, equivalently by
 $L = \overline{L} \circ \widetilde{D}$. It exists exactly when
 $\ker D \subseteq \ker L$. In finite dimensions $\overline{L}$ can be
 extended to some $M : V \to W$, but the extension outside
-$\operatorname{im} D$ is generally arbitrary.
+$\mathrm{im}\,D$ is generally arbitrary.
 
 This repository distinguishes:
 
-1. the unique intrinsic descent $\overline{L} : \operatorname{im} D \to W$;
+1. the unique intrinsic descent $\overline{L} : \mathrm{im}\,D \to W$;
 2. a nonunique ambient extension $M : V \to W$.
 
 PCE uses $M$ because it is easy to represent as a rational matrix. $M$ is
-a certificate representation of the unique map on $\operatorname{im} D$,
+a certificate representation of the unique map on $\mathrm{im}\,D$,
 not itself necessarily unique.
 
 ## 8. The ambiguity object is richer than a binary verdict
@@ -262,5 +262,5 @@ the image.
 **Failed descent** — a gauge witness $Dk = 0$, $L(k) \neq 0$: $L$ fails
 to vanish on the kernel.
 
-The whole system is organised around $\operatorname{im} D$ and
+The whole system is organised around $\mathrm{im}\,D$ and
 $\ker D$.

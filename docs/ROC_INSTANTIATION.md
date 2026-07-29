@@ -11,7 +11,7 @@ $$U = C^0, \qquad V = C^1, \qquad D = \delta^0,$$
 
 and let $r \in C^1$ be the regional discrepancy. Then
 
-$$[r] \in C^1 / \operatorname{im} \delta^0$$
+$$[r] \in C^1 / \mathrm{im}\,\delta^0$$
 
 is exactly the ROC obstruction class (see
 [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md#2-the-first-obstruction-does-the-residue-lift)).

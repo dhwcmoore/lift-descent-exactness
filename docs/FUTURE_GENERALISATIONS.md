@@ -10,11 +10,11 @@ theorem ladder, relation to ROC and PCE. No implementation migration.
 $L(F_r) = L(u_0) + L(\ker D)$ (R0, R1) as the first central theorems, in
 `rocq/`.
 
-**Phase 2 — Descent structure.** Define $\widetilde D : U \to \operatorname{im} D$;
+**Phase 2 — Descent structure.** Define $\widetilde D : U \to \mathrm{im}\,D$;
 prove the descent exact sequence and the induced isomorphism
-$\operatorname{coker} D_W^{*} \cong \operatorname{Hom}(\ker D, W)$ (R2);
-define both obstruction classes $[r] \in \operatorname{coker} D$ and
-$[L] \in \operatorname{coker} D_W^{*}$. This phase must precede Phase 3:
+$\mathrm{coker}\,D_W^{*} \cong \mathrm{Hom}(\ker D, W)$ (R2);
+define both obstruction classes $[r] \in \mathrm{coker}\,D$ and
+$[L] \in \mathrm{coker}\,D_W^{*}$. This phase must precede Phase 3:
 the witness and classification theorems below are stated in terms of
 these obstruction classes.
 

@@ -27,8 +27,8 @@ preservation and reflection separate.
 ROC already discovered that preservation is not reflection. This
 repository generalises that to two independent reflection questions.
 
-**Reconciliation reflection.** Does $b(r) \in \operatorname{im} D'$ imply
-$r \in \operatorname{im} D$? This reflects zero in the residue
+**Reconciliation reflection.** Does $b(r) \in \mathrm{im}\,D'$ imply
+$r \in \mathrm{im}\,D$? This reflects zero in the residue
 obstruction quotient.
 
 **Exactness reflection.** Does $L'(\ker D') = 0$ imply $L(\ker D) = 0$?

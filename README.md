@@ -28,15 +28,15 @@ Two independent questions:
 2. **Descent** — is the claim $L$ constant across every solution, i.e. does
    $L$ factor through $D$?
 
-The first defect lives in $\operatorname{coker} D$; the second in
-$\operatorname{coker} D_W^{*}$, where $D_W^{*}(M) = M \circ D$. Full
+The first defect lives in $\mathrm{coker}\,D$; the second in
+$\mathrm{coker}\,D_W^{*}$, where $D_W^{*}(M) = M \circ D$. Full
 definitions are in [`docs/MATHEMATICAL_SCOPE.md`](docs/MATHEMATICAL_SCOPE.md).
 
 ## The three verdicts
 
 | Verdict | Condition |
 |---|---|
-| **Obstructed** | $[r] \neq 0$ in $\operatorname{coker} D$ — no repair exists |
+| **Obstructed** | $[r] \neq 0$ in $\mathrm{coker}\,D$ — no repair exists |
 | **Underdetermined** | $[r] = 0$ but $L(\ker D) \neq 0$ — repairs exist but disagree on the claim |
 | **Exact** | $[r] = 0$ and $L(\ker D) = 0$ — the claim is constant across every repair |
 

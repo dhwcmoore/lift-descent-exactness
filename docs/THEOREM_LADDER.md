@@ -19,13 +19,13 @@ $$L(F_r) = L(u_0) + L(\ker D).$$
 
 ## R2 — Descent exact sequence and factorisation equivalence
 
-Let $\rho : \operatorname{Hom}(U, W) \to \operatorname{Hom}(\ker D, W)$,
+Let $\rho : \mathrm{Hom}(U, W) \to \mathrm{Hom}(\ker D, W)$,
 $\rho(L) = L|_{\ker D}$. The sequence
 
-$$\operatorname{Hom}(V, W) \xrightarrow{D_W^{*}} \operatorname{Hom}(U, W) \xrightarrow{\rho} \operatorname{Hom}(\ker D, W) \longrightarrow 0$$
+$$\mathrm{Hom}(V, W) \xrightarrow{D_W^{*}} \mathrm{Hom}(U, W) \xrightarrow{\rho} \mathrm{Hom}(\ker D, W) \longrightarrow 0$$
 
 is exact, inducing a canonical isomorphism
-$\operatorname{coker} D_W^{*} \cong \operatorname{Hom}(\ker D, W)$,
+$\mathrm{coker}\,D_W^{*} \cong \mathrm{Hom}(\ker D, W)$,
 $[L] \mapsto L|_{\ker D}$ (see
 [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md#the-descent-exact-sequence)).
 
@@ -33,10 +33,10 @@ Consequently the following are equivalent:
 
 - $L(\ker D) = 0$;
 - $\ker D \subseteq \ker L$;
-- $[L] = 0$ in $\operatorname{coker} D_W^{*}$;
-- there exists a unique $\overline{L} : \operatorname{im} D \to W$ such
+- $[L] = 0$ in $\mathrm{coker}\,D_W^{*}$;
+- there exists a unique $\overline{L} : \mathrm{im}\,D \to W$ such
   that $L = \overline{L} \circ \widetilde{D}$, where
-  $\widetilde D : U \to \operatorname{im} D$, $\widetilde D(u) = D(u)$
+  $\widetilde D : U \to \mathrm{im}\,D$, $\widetilde D(u) = D(u)$
   (see [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md#7-the-intrinsic-factorisation-is-not-the-matrix-m));
 - there exists an ambient extension $M : V \to W$ such that $L = MD$.
 
@@ -51,7 +51,7 @@ $x \in W$ such that $Lu = x$ for every $u \in F_r$.
 
 ## R4 — Obstruction certificate
 
-$r \notin \operatorname{im} D$ if and only if there exists $y \in V^{*}$
+$r \notin \mathrm{im}\,D$ if and only if there exists $y \in V^{*}$
 such that $yD = 0$, $y(r) \neq 0$.
 
 ## R5 — Underdetermination certificate
@@ -69,12 +69,12 @@ that reports both sectors with $[r] \neq 0$ as Obstructed.
 
 ## R7 — Exactness profile completeness
 
-The pair $([r], [L]) \in \operatorname{coker} D \times \operatorname{coker} D_W^{*}$
+The pair $([r], [L]) \in \mathrm{coker}\,D \times \mathrm{coker}\,D_W^{*}$
 completely determines the verdict, and — unlike the collapsed verdict of
 R6 — retains the descent defect $[L]$ even when $[r] \neq 0$ (see
 [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md#profile-versus-verdict)).
 Equivalently, by the isomorphism of R2, the pair
-$([r], L|_{\ker D}) \in \operatorname{coker} D \times \operatorname{Hom}(\ker D, W)$.
+$([r], L|_{\ker D}) \in \mathrm{coker}\,D \times \mathrm{Hom}(\ker D, W)$.
 
 ## R8 — Universal exact quotient
 
@@ -87,7 +87,7 @@ unique $\overline q : W / A_{D,L} \to Q$ satisfying $q = \overline q \circ \pi$
 
 Invertible changes of state, residue, and claim coordinates induce
 isomorphisms on the lifting and descent obstruction spaces
-($\operatorname{coker} D$ and $\operatorname{coker} D_W^{*}$ before and
+($\mathrm{coker}\,D$ and $\mathrm{coker}\,D_W^{*}$ before and
 after the change are not literally the same space). Under these induced
 isomorphisms, the exactness profile and its witnesses are transported,
 and the operational verdict is invariant.

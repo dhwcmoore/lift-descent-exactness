@@ -7,7 +7,7 @@ descent, and exact value constitution for finite-dimensional linear
 presentations. Given a linear map $D : U \to V$, a presented residue
 $r \in V$, and a claim map $L : U \to W$, it distinguishes failure of
 realisation from failure of claim determination. The first defect is
-represented by the class of $r$ in $\operatorname{coker} D$; the second by
+represented by the class of $r$ in $\mathrm{coker}\,D$; the second by
 the restriction of $L$ to $\ker D$, equivalently by the failure of $L$ to
 factor through $D$. When both defects vanish, the claim has a canonical
 value independent of all choices of repair and factorisation witness.
@@ -62,7 +62,7 @@ is a response to a theorem forcing the question, not a starting posture.
 
 ## The two independent axes
 
-**Existence axis.** $r \in \operatorname{im} D$ or $r \notin \operatorname{im} D$
+**Existence axis.** $r \in \mathrm{im}\,D$ or $r \notin \mathrm{im}\,D$
 — can the concrete situation be reconciled at all within the declared
 algebra?
 
