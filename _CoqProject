@@ -12,3 +12,4 @@ rocq/QFiniteCoordinates.v
 rocq/QMatrixAlgebra.v
 rocq/QElementaryRows.v
 rocq/QRowOperationSequence.v
+rocq/QPivotStep.v
