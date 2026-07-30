@@ -3,3 +3,4 @@ rocq/QVector.v
 rocq/QLinearMap.v
 rocq/QSubspace.v
 rocq/LinearInstance.v
+rocq/QSubspaceMap.v
