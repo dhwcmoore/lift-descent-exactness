@@ -5,3 +5,4 @@ rocq/QSubspace.v
 rocq/LinearInstance.v
 rocq/QSubspaceMap.v
 rocq/QExactSequence.v
+rocq/QObstruction.v
