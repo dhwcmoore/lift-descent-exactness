@@ -1,4 +1,5 @@
 -Q rocq LiftDescent
 rocq/QVector.v
 rocq/QLinearMap.v
+rocq/QSubspace.v
 rocq/LinearInstance.v
