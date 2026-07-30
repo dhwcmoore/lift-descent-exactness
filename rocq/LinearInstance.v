@@ -87,3 +87,57 @@ Definition translate {n : nat} (u0 : QVec n) (S : QVec n -> Prop) : QVec n -> Pr
 
 Definition image_set {n m : nat} (T : QLinearMap n m) (S : QVec n -> Prop) : QVec m -> Prop :=
   fun w => exists u : QVec n, S u /\ lmap T u = w.
+
+(** ** Equality of subsets
+
+    [QVec n -> Prop] is a function type, so Leibniz equality between two
+    subsets would require functional extensionality — not derivable in
+    Coq's base logic — to prove from pointwise agreement, exactly the
+    situation [QVector.v] avoided for vectors by choosing [Vector.t] over
+    finite functions (see that file's representation note). Subsets have
+    no such alternative representation available here, so instead of an
+    axiom, [same_set] states the equality Phase 1 actually needs: two
+    subsets agree on every point. This is what [repair_fibre_translate]
+    below concludes with, and it is exactly what a later proof can
+    [destruct]/[apply] without ever invoking extensionality. *)
+
+Definition same_set {n : nat} (S T : QVec n -> Prop) : Prop :=
+  forall u : QVec n, S u <-> T u.
+
+(** ** R0: the repair-fibre translation theorem
+
+    [F_r = u0 + ker D], stated for an arbitrary linear map [D] rather
+    than a full [LinearInstance] — the stronger, more reusable result,
+    later instantiable at [inst_D]. *)
+
+Theorem repair_fibre_translate
+    {n m : nat}
+    (D : QLinearMap n m)
+    (r : QVec m)
+    (u0 : QVec n)
+    (Hu0 : lmap D u0 = r) :
+  same_set (repair_fibre D r) (translate u0 (kernel D)).
+Proof.
+  unfold same_set, repair_fibre, translate, kernel.
+  intros u.
+  split.
+  - intros Hu.
+    exists (vsub u u0).
+    split.
+    + rewrite (lmap_preserves_sub D u u0).
+      rewrite Hu, Hu0.
+      rewrite vsub_def.
+      apply vadd_opp_r.
+    + rewrite vsub_def.
+      rewrite <- vadd_assoc.
+      rewrite (vadd_comm u0 u).
+      rewrite vadd_assoc.
+      rewrite vadd_opp_r.
+      symmetry.
+      apply vadd_0_r.
+  - intros [k [Hk Hu]].
+    rewrite Hu.
+    rewrite (lmap_add D u0 k).
+    rewrite Hu0, Hk.
+    apply vadd_0_r.
+Qed.
