@@ -8,3 +8,4 @@ rocq/QExactSequence.v
 rocq/QObstruction.v
 rocq/QDescentBasics.v
 rocq/QIntrinsicDescent.v
+rocq/QFiniteCoordinates.v
