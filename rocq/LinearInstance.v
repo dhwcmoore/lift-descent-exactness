@@ -141,3 +141,47 @@ Proof.
     rewrite Hu0, Hk.
     apply vadd_0_r.
 Qed.
+
+(** ** R1: the claim-fibre image theorem
+
+    [L(F_r) = L(u0) + L(ker D)], for arbitrary linear maps [D] and [L]
+    rather than a full [LinearInstance]. Transports the fibre
+    decomposition of [repair_fibre_translate] through [L]; it does not
+    reprove that decomposition. *)
+
+Theorem claim_fibre_translate
+    {nU nV nW : nat}
+    (D : QLinearMap nU nV)
+    (L : QLinearMap nU nW)
+    (r : QVec nV)
+    (u0 : QVec nU)
+    (Hu0 : lmap D u0 = r) :
+  same_set
+    (image_set L (repair_fibre D r))
+    (translate (lmap L u0) (image_set L (kernel D))).
+Proof.
+  unfold same_set.
+  intros w.
+  split.
+  - intros [u [Hu Hw]].
+    destruct (repair_fibre_translate D r u0 Hu0 u) as [Hfwd _].
+    destruct (Hfwd Hu) as [k [Hk Heq]].
+    exists (lmap L k).
+    split.
+    + exists k. split.
+      * exact Hk.
+      * reflexivity.
+    + rewrite <- Hw, Heq.
+      apply (lmap_add L u0 k).
+  - intros [z [[k [Hk Hz]] Hw]].
+    destruct (repair_fibre_translate D r u0 Hu0 (vadd u0 k)) as [_ Hbwd].
+    exists (vadd u0 k).
+    split.
+    + apply Hbwd.
+      exists k. split.
+      * exact Hk.
+      * reflexivity.
+    + rewrite (lmap_add L u0 k), Hz.
+      symmetry.
+      exact Hw.
+Qed.
