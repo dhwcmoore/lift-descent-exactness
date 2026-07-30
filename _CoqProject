@@ -10,3 +10,4 @@ rocq/QDescentBasics.v
 rocq/QIntrinsicDescent.v
 rocq/QFiniteCoordinates.v
 rocq/QMatrixAlgebra.v
+rocq/QElementaryRows.v
