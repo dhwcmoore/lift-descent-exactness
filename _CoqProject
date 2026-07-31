@@ -13,3 +13,4 @@ rocq/QMatrixAlgebra.v
 rocq/QElementaryRows.v
 rocq/QRowOperationSequence.v
 rocq/QPivotStep.v
+rocq/QEliminationStructure.v
