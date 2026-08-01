@@ -20,3 +20,4 @@ rocq/QImageExtension.v
 rocq/QImagePreimage.v
 rocq/QDescentFactorisation.v
 rocq/QLinearFunctional.v
+rocq/QSeparatorWitness.v
