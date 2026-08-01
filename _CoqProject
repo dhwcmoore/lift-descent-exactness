@@ -18,3 +18,4 @@ rocq/QEliminationCorrectness.v
 rocq/QImageProjection.v
 rocq/QImageExtension.v
 rocq/QImagePreimage.v
+rocq/QDescentFactorisation.v
