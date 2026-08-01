@@ -22,3 +22,4 @@ rocq/QDescentFactorisation.v
 rocq/QLinearFunctional.v
 rocq/QSeparatorWitness.v
 rocq/QKernelProjection.v
+rocq/QKernelSpanning.v
