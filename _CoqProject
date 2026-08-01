@@ -16,3 +16,4 @@ rocq/QPivotStep.v
 rocq/QEliminationStructure.v
 rocq/QEliminationCorrectness.v
 rocq/QImageProjection.v
+rocq/QImageExtension.v
