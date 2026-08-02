@@ -27,3 +27,4 @@ rocq/QGaugeWitness.v
 rocq/QVerdictClassification.v
 rocq/QExactnessProfile.v
 rocq/QUniversalExactQuotient.v
+rocq/QCanonicalValue.v
