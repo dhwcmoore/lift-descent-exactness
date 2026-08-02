@@ -25,3 +25,4 @@ rocq/QKernelProjection.v
 rocq/QKernelSpanning.v
 rocq/QGaugeWitness.v
 rocq/QVerdictClassification.v
+rocq/QExactnessProfile.v
