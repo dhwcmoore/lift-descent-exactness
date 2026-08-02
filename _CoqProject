@@ -24,3 +24,4 @@ rocq/QSeparatorWitness.v
 rocq/QKernelProjection.v
 rocq/QKernelSpanning.v
 rocq/QGaugeWitness.v
+rocq/QVerdictClassification.v
