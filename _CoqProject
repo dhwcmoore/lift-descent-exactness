@@ -33,3 +33,4 @@ rocq/QPresentationMorphism.v
 rocq/QLiftObstructionTransport.v
 rocq/QDescentObstructionTransport.v
 rocq/QIsomorphicTransport.v
+rocq/QPresentationPreservation.v
