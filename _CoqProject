@@ -38,3 +38,4 @@ rocq/QPresentationReflection.v
 rocq/QPresentationSafety.v
 rocq/QCochainInstantiation.v
 rocq/QAdmissibilityGate.v
+rocq/QPCEWitnessPredicates.v
