@@ -29,3 +29,4 @@ rocq/QExactnessProfile.v
 rocq/QUniversalExactQuotient.v
 rocq/QCanonicalValue.v
 rocq/QLinearIsomorphism.v
+rocq/QPresentationMorphism.v
