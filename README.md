@@ -1,113 +1,577 @@
-# lift-descent-exactness
+# Lift-Descent Exactness
 
-The general mathematics of two independent obstruction axes for a linear
-presentation: **can a presented residue be lifted**, and **does a declared
-claim descend** through that presentation.
+A constructive Rocq development of two independent obstruction questions for a finite rational linear presentation:
 
-This repository is not a merger of
-[`regional-obstruction-calculus`](https://github.com/dhwcmoore/regional-obstruction-calculus)
-(ROC) and [`proof-carrying-exactness`](https://github.com/dhwcmoore/proof-carrying-exactness)
-(PCE). It extracts the mathematical situation both of those repositories
-instantiate, strips away regions, sensors, PDEs, certificate formats, and
-provenance policy, and studies the resulting linear-algebra object on its
-own terms. ROC and PCE become instantiations of this theory, not its
-ancestors — see [`docs/ROC_INSTANTIATION.md`](docs/ROC_INSTANTIATION.md) and
-[`docs/PCE_INSTANTIATION.md`](docs/PCE_INSTANTIATION.md).
+1. **Can a presented residue be lifted?**
+2. **Does a declared claim descend through the presentation?**
 
-## The object of study
+The repository isolates the common mathematics underlying [`regional-obstruction-calculus`](https://github.com/dhwcmoore/regional-obstruction-calculus) and [`proof-carrying-exactness`](https://github.com/dhwcmoore/proof-carrying-exactness), while remaining independent of both codebases.
 
-Finite-dimensional vector spaces $U, V, W$ over $\mathbb{Q}$, a linear map
-$D : U \to V$, a presented residue $r \in V$, and a declared claim map
-$L : U \to W$:
+It formalises repair fibres, lifting and descent obstructions, constructive witnesses, exactness profiles, canonical values, universal exact quotients, presentation transport, and the mathematical ROC and PCE instantiations.
 
-$$\mathcal{I} = (U, V, W, D, r, L).$$
+## Status
 
-Two independent questions:
+**Phases 1-6 are formally complete.**
 
-1. **Lift** — can $r$ be realised, i.e. does $Du = r$ have a solution?
-2. **Descent** — is the claim $L$ constant across every solution, i.e. does
-   $L$ factor through $D$?
+The Rocq development currently contains 41 source files and proves:
 
-The first defect lives in $\mathrm{coker}\,D$; the second in
-$\mathrm{coker}\,D_W^{*}$, where $D_W^{*}(M) = M \circ D$. Full
-definitions are in [`docs/MATHEMATICAL_SCOPE.md`](docs/MATHEMATICAL_SCOPE.md).
+* repair-fibre and claim-fibre normal forms;
+* constructive descent factorisation;
+* sound and complete obstruction witnesses;
+* the operational three-way verdict classification;
+* the four-sector exactness profile;
+* canonical exact-value existence and uniqueness;
+* the universal exact quotient;
+* invariance under invertible presentation changes;
+* separate preservation and reflection conditions for noninvertible transformations;
+* ROC as the cochain and lifting-only instantiation;
+* PCE's exact, underdetermined, and obstructed witness predicates;
+* an abstract admissibility gate composed with the three-way linear classification.
 
-## The three verdicts
+The project is checked with compilation, `coqchk`, an admitted-proof scan, a project-axiom scan, and a declaration inventory.
 
-| Verdict | Condition |
-|---|---|
-| **Obstructed** | $[r] \neq 0$ in $\mathrm{coker}\,D$ — no repair exists |
-| **Underdetermined** | $[r] = 0$ but $L(\ker D) \neq 0$ — repairs exist but disagree on the claim |
-| **Exact** | $[r] = 0$ and $L(\ker D) = 0$ — the claim is constant across every repair |
+## The mathematical instance
 
-`INADMISSIBLE` is deliberately excluded from this trichotomy — see
-[`docs/NON_CLAIMS.md`](docs/NON_CLAIMS.md). It belongs to a later evidence/adapter
-theory that gates how $(U, V, W, D, r, L)$ gets constructed in the first
-place, not to the linear theory itself.
+The starting point is a finite-dimensional rational linear instance
 
-## The central theorem
+[
+\mathcal I=(U,V,W,D,r,L),
+]
 
-When both defects vanish, there exist $u \in U$ with $Du = r$ and
-$M : V \to W$ with $MD = L$, and the value
+where
 
-$$x = M(r) = L(u)$$
+[
+D:U\to V,
+\qquad
+r\in V,
+\qquad
+L:U\to W.
+]
 
-is independent of every choice of $u$ and $M$ — a canonical exact value
-constituted by nonunique witnesses. See
-[`docs/MATHEMATICAL_SCOPE.md`](docs/MATHEMATICAL_SCOPE.md), Section 6, for
-the informal argument, and [`docs/THEOREM_LADDER.md`](docs/THEOREM_LADDER.md),
-R3, for the planned formal theorem.
+Interpretively:
 
-## Repository layout
+* (U) is a space of possible repairs, states, explanations, or reconstructions;
+* (V) is a space of presented constraints or residues;
+* (D) records how a candidate state meets those constraints;
+* (r) is the residue that must be realised;
+* (L) is a declared claim or output computed from a candidate state.
 
-This is a fresh repository with a deliberately small trusted foundation —
-it does not inherit the ROC or PCE codebases. Current status: **Phase 0
-(founding documents)**.
+The theory does not require these interpretations. Its theorems concern the exact algebraic presentation itself.
+
+## Two independent obstruction axes
+
+### 1. Lifting
+
+A repair is a vector (u\in U) satisfying
+
+[
+Du=r.
+]
+
+The repair fibre is
+
+[
+F_r={u\in U\mid Du=r}.
+]
+
+The lifting question is whether (F_r) is inhabited, equivalently whether
+
+[
+r\in\operatorname{im}D.
+]
+
+When no repair exists, the residue has a nonzero obstruction class in
+
+[
+\operatorname{coker}D.
+]
+
+Constructively, obstruction is witnessed by a linear functional
+
+[
+y:V\to\mathbb Q
+]
+
+such that
+
+[
+yD=0,
+\qquad
+y(r)\neq0.
+]
+
+### 2. Descent
+
+Even when repairs exist, different repairs can yield different claim values.
+
+The claim descends precisely when it is constant on every repair fibre. This is equivalent to
+
+[
+L(\ker D)=0,
+]
+
+or, equivalently,
+
+[
+\ker D\subseteq\ker L.
+]
+
+In finite-dimensional rational vector spaces, this is also equivalent to the existence of a factor map
+
+[
+M:V\to W
+]
+
+such that
+
+[
+L=M\circ D.
+]
+
+Failure of descent is witnessed by a gauge direction (k\in U) satisfying
+
+[
+Dk=0,
+\qquad
+Lk\neq0.
+]
+
+For any repair (u_0), both (u_0) and (u_0+k) realise the same residue, but
+
+[
+L(u_0+k)\neq L(u_0).
+]
+
+The lifting and descent questions are logically independent.
+
+## The exactness profile
+
+The complete mathematical profile has four sectors.
+
+| Profile                           |          Lifting |                    Descent |
+| ---------------------------------- | ----------------: | --------------------------: |
+| **Realisable Exact**              |    repair exists |             claim descends |
+| **Realisable Underdetermined**    |    repair exists |     claim does not descend |
+| **Obstructed but Descending**     | no repair exists |    claim map would descend |
+| **Obstructed and Non-Descending** | no repair exists | claim map does not descend |
+
+The profile retains information about both obstruction axes even when the lifting obstruction is already nonzero.
+
+## The operational verdict
+
+For operational use, the four-sector profile collapses to three verdicts.
+
+| Verdict             | Mathematical condition                                 |
+| -------------------- | -------------------------------------------------------- |
+| **Obstructed**      | no (u) satisfies (Du=r)                                |
+| **Underdetermined** | a repair exists, but (L) varies across repairs         |
+| **Exact**           | a repair exists and (L) is constant across all repairs |
+
+The two lifting-obstructed profile sectors both produce the operational verdict **Obstructed**.
+
+The Rocq development proves constructively that exactly one of these three operational verdicts holds for every finite rational instance.
+
+## Canonical exact value
+
+In the exact sector, choose any repair (u_0) and any factor map (M) satisfying
+
+[
+Du_0=r,
+\qquad
+L=M\circ D.
+]
+
+Then
+
+[
+L(u_0)=M(r).
+]
+
+Although neither the repair nor the factor map need be unique, their resulting value is unique.
+
+There exists exactly one (x\in W) such that
+
+[
+Lu=x
+]
+
+for every repair (u\in F_r). Every repair and every valid factor map calculate that same value:
+
+[
+x=Lu=M(r).
+]
+
+This is the repository's central exact-value result: a canonical value constituted by nonunique witnesses.
+
+## Universal exact quotient
+
+When descent fails, the ambiguity is not merely a Boolean defect.
+
+Let
+
+[
+A_{D,L}=L(\ker D)\subseteq W.
+]
+
+The quotient claim
+
+[
+\pi L:U\to W/A_{D,L}
+]
+
+is exact with respect to (D): every gauge-dependent change in the original claim is removed.
+
+The development proves the corresponding universal property. Any quotient of (W) through which the claim becomes exact factors uniquely through
+
+[
+W/A_{D,L}.
+]
+
+Thus underdetermination has a canonical exact remainder rather than only a negative verdict.
+
+## Presentation morphisms
+
+The repository distinguishes invertible transport from noninvertible transformation.
+
+### Invertible changes
+
+Linear isomorphisms of the state, residue, and claim coordinates transport:
+
+* lifting witnesses;
+* descent witnesses;
+* obstruction witnesses;
+* gauge witnesses;
+* exactness profiles;
+* operational verdicts.
+
+The relevant obstruction spaces before and after transport are isomorphic, not literally identical.
+
+### Noninvertible changes
+
+For noninvertible presentation transformations, preservation and reflection are separate properties.
+
+The development proves explicit conditions for:
+
+* preservation of realisability;
+* reflection of realisability;
+* preservation of claim descent;
+* reflection of claim descent;
+* preservation and reflection of verdict information.
+
+No general preservation theorem is asserted without its required hypotheses.
+
+## ROC instantiation
+
+[`regional-obstruction-calculus`](https://github.com/dhwcmoore/regional-obstruction-calculus) instantiates the lifting half of the theory.
+
+For a finite cochain presentation, take
+
+[
+U=C^0,
+\qquad
+V=C^1,
+\qquad
+D=\delta^0,
+]
+
+with regional discrepancy (r\in C^1).
+
+Then a ROC repair is exactly a solution of
+
+[
+\delta^0 b=r,
+]
+
+and a translated ROC cycle separator is exactly a lifting-obstruction witness.
+
+The formal instantiation uses a zero-dimensional claim space
+
+[
+W=0.
+]
+
+Descent is consequently automatic, and only two operational outcomes remain:
+
+* **Exact**, meaning that a cochain repair exists;
+* **Obstructed**, meaning that a separator proves no repair exists.
+
+In this embedding, **Exact** asserts repairability plus a vacuous zero-dimensional claim. It does not assert a substantive application-level value.
+
+The core repository does not import the ROC codebase or verify ROC's production implementation.
+
+## PCE instantiation
+
+[`proof-carrying-exactness`](https://github.com/dhwcmoore/proof-carrying-exactness) uses witness forms corresponding to the core mathematical witnesses.
+
+### Exact witness
+
+[
+Du=r,
+\qquad
+L=M\circ D,
+\qquad
+M(r)=x.
+]
+
+The development derives
+
+[
+L(u)=x
+]
+
+and proves that (x) is the unique exact value.
+
+### Underdetermined witness
+
+[
+Du=r,
+\qquad
+Dk=0,
+\qquad
+Lk\neq0.
+]
+
+The development derives a second repair (u+k) with a different claim value.
+
+### Obstructed witness
+
+[
+yD=0,
+\qquad
+y(r)\neq0.
+]
+
+This is exactly the separator witness for failure of lifting.
+
+## Admissibility is a gate, not a fourth linear verdict
+
+PCE also has an `INADMISSIBLE` outcome. This repository keeps it structurally separate from the linear verdicts.
+
+The architecture is:
+
+[
+e
+\xrightarrow{\text{admissibility gate}}
+\begin{cases}
+\text{inadmissible},\
+\text{admissible with a linear instance}.
+\end{cases}
+]
+
+Only an admissible evidence package proceeds to the linear classification:
+
+[
+\text{Obstructed},
+\quad
+\text{Underdetermined},
+\quad
+\text{Exact}.
+]
+
+The formal gated result therefore has the nested form
 
 ```text
-lift-descent-exactness/
-├── README.md
-├── LICENSE
-├── NOTICE
-├── docs/
-│   ├── FOUNDATION.md            — charter and central definitions
-│   ├── MATHEMATICAL_SCOPE.md    — the object of study, in full
-│   ├── NON_CLAIMS.md            — what this repository does not prove
-│   ├── THEOREM_LADDER.md        — R0–R10, the initial theorem sequence
-│   ├── PRESENTATION_MORPHISMS.md — morphisms between instances
-│   ├── ROC_INSTANTIATION.md     — how ROC instantiates the lift half
-│   ├── PCE_INSTANTIATION.md     — how PCE instantiates both halves
-│   └── FUTURE_GENERALISATIONS.md — phases 1–8, modules/abelian categories
-├── rocq/        — (Phase 1+) Rocq development, mathematical source of truth
-├── reference/   — (Phase 3+) reference executable semantics in Python
-├── examples/    — (Phase 3+) worked instances for each verdict
-└── tests/
+GatedInadmissible
+or
+GatedAdmissible VerdictObstructed
+or
+GatedAdmissible VerdictUnderdetermined
+or
+GatedAdmissible VerdictExact
 ```
 
-`rocq/`, `reference/`, `examples/`, and `tests/` are not populated yet;
-Phase 0 is founding documents only, per
-[`docs/FUTURE_GENERALISATIONS.md`](docs/FUTURE_GENERALISATIONS.md#development-phases).
+This is deliberately not a flat four-constructor linear verdict.
 
-## Relation to ROC and PCE
+The admissibility gate is abstract. The core development proves sound composition with positive and negative gate witnesses, but does not define a domain-specific admissibility policy.
+
+## What is proved
+
+The formal development establishes, over finite rational coordinate spaces:
+
+* repair-fibre and claim-fibre structure;
+* the lifting obstruction;
+* intrinsic and ambient claim descent;
+* constructive image preimages and factorisation;
+* separator-witness soundness and completeness;
+* gauge-witness soundness and completeness;
+* verdict exclusivity and completeness;
+* four-sector profile completeness;
+* canonical exact-value existence and uniqueness;
+* universal exact quotient;
+* isomorphic transport;
+* noninvertible preservation and reflection;
+* the cochain lifting instantiation;
+* the abstract admissibility gate;
+* PCE witness-predicate correspondence;
+* the complete gated PCE witness classification.
+
+## What is not proved
+
+The repository does **not** prove that a physical, geometric, evidential, or computational process has been represented correctly by
+
+[
+(U,V,W,D,r,L).
+]
+
+It takes the algebraic presentation as its starting point.
+
+In particular, it does not formalise or verify:
+
+* sensors or tracking systems;
+* regional geometry;
+* PDE discretisations;
+* application-specific evidence semantics;
+* production parsers or serialisers;
+* JSON certificate formats;
+* cryptographic digests;
+* provenance policies;
+* command-line tools;
+* Python verifier implementations;
+* generator implementations;
+* commercial or deployment claims.
+
+Those belong to domain adapters and applied repositories.
+
+This boundary is essential: exact algebraic reasoning does not by itself certify that the algebraic presentation is relevant to, or faithful to, the concrete process being modelled.
+
+See [`docs/NON_CLAIMS.md`](docs/NON_CLAIMS.md).
+
+## Formal development
+
+The Rocq source is organised by mathematical dependency.
 
 ```text
-                 lift-descent-exactness
-                    /             \
-                   /               \
-regional-obstruction-calculus   proof-carrying-exactness
+rocq/
+├── QVector.v
+├── QLinearMap.v
+├── QSubspace.v
+├── LinearInstance.v
+├── QSubspaceMap.v
+├── QExactSequence.v
+├── QObstruction.v
+├── QDescentBasics.v
+├── QIntrinsicDescent.v
+├── QFiniteCoordinates.v
+├── QMatrixAlgebra.v
+├── QElementaryRows.v
+├── QRowOperationSequence.v
+├── QPivotStep.v
+├── QEliminationStructure.v
+├── QEliminationCorrectness.v
+├── QImageProjection.v
+├── QImageExtension.v
+├── QImagePreimage.v
+├── QDescentFactorisation.v
+├── QLinearFunctional.v
+├── QSeparatorWitness.v
+├── QKernelProjection.v
+├── QKernelSpanning.v
+├── QGaugeWitness.v
+├── QVerdictClassification.v
+├── QExactnessProfile.v
+├── QUniversalExactQuotient.v
+├── QCanonicalValue.v
+├── QLinearIsomorphism.v
+├── QPresentationMorphism.v
+├── QLiftObstructionTransport.v
+├── QDescentObstructionTransport.v
+├── QIsomorphicTransport.v
+├── QPresentationPreservation.v
+├── QPresentationReflection.v
+├── QPresentationSafety.v
+├── QCochainInstantiation.v
+├── QAdmissibilityGate.v
+├── QPCEWitnessPredicates.v
+└── QPCEInstantiation.v
 ```
 
-The intended mathematical dependency direction is from
-`lift-descent-exactness` to the ROC and PCE instantiations: this
-repository is intended to develop and formally verify the mathematics
-that ROC's regional and cochain instances, and PCE's independently
-checkable certificates, both instantiate. At Phase 0 this relationship
-is architectural — stated in the founding documents, not yet backed by
-Rocq proofs — with formal instantiation theorems scheduled for Phase 6
-(see [`docs/FUTURE_GENERALISATIONS.md`](docs/FUTURE_GENERALISATIONS.md#development-phases)).
-The dependency direction is one-way — no circular dependency.
+The development uses canonical rationals and ordinary Leibniz equality. It does not add project axioms or admitted theorems.
+
+## Building and checking
+
+The project requires a Rocq/Coq installation providing:
+
+```text
+coq_makefile
+coqc
+coqchk
+```
+
+Run the complete verification pipeline with:
+
+```bash
+make check
+```
+
+This performs:
+
+1. an `Admitted` scan;
+2. a project-defined `Axiom`, `Parameter`, and `Conjecture` scan;
+3. compilation of the complete Rocq development;
+4. `coqchk` validation;
+5. declaration-inventory checking.
+
+To build only:
+
+```bash
+make
+```
+
+To remove generated build files:
+
+```bash
+make clean
+```
+
+## Documentation
+
+The founding documents explain the mathematical and architectural programme:
+
+* [`docs/FOUNDATION.md`](docs/FOUNDATION.md) - charter and basic commitments;
+* [`docs/MATHEMATICAL_SCOPE.md`](docs/MATHEMATICAL_SCOPE.md) - full mathematical object and obstruction structure;
+* [`docs/NON_CLAIMS.md`](docs/NON_CLAIMS.md) - representation and implementation boundaries;
+* [`docs/THEOREM_LADDER.md`](docs/THEOREM_LADDER.md) - central theorem sequence;
+* [`docs/PRESENTATION_MORPHISMS.md`](docs/PRESENTATION_MORPHISMS.md) - invertible and noninvertible transformations;
+* [`docs/ROC_INSTANTIATION.md`](docs/ROC_INSTANTIATION.md) - ROC's lifting interpretation;
+* [`docs/PCE_INSTANTIATION.md`](docs/PCE_INSTANTIATION.md) - PCE witness interpretation;
+* [`docs/FUTURE_GENERALISATIONS.md`](docs/FUTURE_GENERALISATIONS.md) - wider abstraction beyond finite rational vector spaces.
+
+The Rocq files are the formal mathematical source of truth.
+
+## Relationship to ROC and PCE
+
+```text
+                    lift-descent-exactness
+                       /             \
+                      /               \
+ regional-obstruction-calculus   proof-carrying-exactness
+```
+
+The dependency direction is conceptual and one-way:
+
+* this repository proves the common linear mathematics;
+* ROC supplies regional and cochain constructions;
+* PCE supplies certificate formats, independent verification, and application-facing assurance machinery.
+
+This repository does not inherit either applied codebase and has no circular dependency on them.
+
+## Future direction
+
+The next mathematical question is which parts of the finite rational development survive in wider settings, including:
+
+* modules over a ring;
+* abelian categories;
+* exact categories;
+* regular categories;
+* indexed or fibred settings.
+
+Generalisation should preserve the distinction between:
+
+* intrinsic descent through (\operatorname{im}D);
+* ambient extension to all of (V).
+
+The second uses finite-dimensional vector-space extension and cannot simply be assumed in a wider category.
 
 ## License
 
-AGPL-3.0, matching `regional-obstruction-calculus` and
-`proof-carrying-exactness`. See [`LICENSE`](LICENSE).
+AGPL-3.0-or-later. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
