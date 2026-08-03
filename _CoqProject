@@ -39,3 +39,4 @@ rocq/QPresentationSafety.v
 rocq/QCochainInstantiation.v
 rocq/QAdmissibilityGate.v
 rocq/QPCEWitnessPredicates.v
+rocq/QPCEInstantiation.v
