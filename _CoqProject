@@ -37,3 +37,4 @@ rocq/QPresentationPreservation.v
 rocq/QPresentationReflection.v
 rocq/QPresentationSafety.v
 rocq/QCochainInstantiation.v
+rocq/QAdmissibilityGate.v
