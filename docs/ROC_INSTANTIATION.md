@@ -36,12 +36,14 @@ not need but this repository's theory accommodates without modification.
 
 ## Dependency direction
 
-The intended mathematical dependency direction is from this repository
-to ROC: this repository is intended to develop and formally verify the
-mathematics that ROC's regional and cochain instances instantiate. There
-is no dependency from this repository back onto ROC's codebase, and
-formal instantiation theorems connecting the two are scheduled for
-Phase 6 (see
-[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md#development-phases)) —
-see also [`FOUNDATION.md`](FOUNDATION.md#why-a-third-repository-and-why-it-is-not-a-merger)
-and the diagram in the top-level [`README.md`](../README.md#relation-to-roc-and-pce).
+The mathematical dependency direction is from this repository to ROC:
+this repository develops and formally verifies the mathematics that
+ROC's regional and cochain instances instantiate. There is no dependency
+from this repository back onto ROC's codebase.
+
+The formal instantiation theorems connecting the two are complete, in
+[`rocq/QCochainInstantiation.v`](../rocq/QCochainInstantiation.v) — see
+also [`FOUNDATION.md`](FOUNDATION.md#why-a-third-repository-and-why-it-is-not-a-merger)
+and the diagram in the top-level [`README.md`](../README.md#relationship-to-roc-and-pce).
+This does not verify ROC's production implementation; see
+[`NON_CLAIMS.md`](NON_CLAIMS.md).

@@ -17,9 +17,10 @@ value independent of all choices of repair and factorisation witness.
 This repository does not prove that any physical, geometric, evidential,
 or computational system has been represented correctly by $D$, $r$, and
 $L$. This repository takes an exact algebraic presentation as its
-starting point and develops the consequences that follow from it. At
-Phase 0 those consequences are stated as a theorem programme; formal
-proofs are not yet present. (Expanded in [`NON_CLAIMS.md`](NON_CLAIMS.md).)
+starting point and develops the consequences that follow from it. Those
+consequences are now formally proved in the Rocq development (`rocq/`);
+see [`THEOREM_LADDER.md`](THEOREM_LADDER.md) for the statements.
+(Expanded in [`NON_CLAIMS.md`](NON_CLAIMS.md).)
 
 ## Why a third repository, and why it is not a merger
 

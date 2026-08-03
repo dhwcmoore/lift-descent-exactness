@@ -27,18 +27,26 @@ mathematics itself, and they do not belong in this repository (see
 ## `INADMISSIBLE`
 
 PCE's `INADMISSIBLE` verdict corresponds to the admissibility gate
-described in [`NON_CLAIMS.md`](NON_CLAIMS.md#where-inadmissible-belongs):
+formalised in [`rocq/QAdmissibilityGate.v`](../rocq/QAdmissibilityGate.v)
+(see [`NON_CLAIMS.md`](NON_CLAIMS.md#where-inadmissible-belongs)):
 a property of how $e \to (U, V, W, D, r, L)$ was constructed, checked
-before the linear theory's three-way classification ever applies.
+before the linear theory's three-way classification ever applies. The
+composed result, proved in
+[`rocq/QPCEInstantiation.v`](../rocq/QPCEInstantiation.v), is the nested
+outcome `GatedInadmissible` or `GatedAdmissible` of one of Obstructed,
+Underdetermined, Exact — never a flat four-constructor verdict.
 
 ## Dependency direction
 
-The intended mathematical dependency direction is from this repository
-to PCE: this repository is intended to develop and formally verify the
-mathematics that PCE's witness forms turn into independently checkable
-certificates. There is no dependency from this repository back onto
-PCE's codebase, and formal instantiation theorems connecting the two are
-scheduled for Phase 6 (see
-[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md#development-phases)) —
-see also [`FOUNDATION.md`](FOUNDATION.md#why-a-third-repository-and-why-it-is-not-a-merger)
-and the diagram in the top-level [`README.md`](../README.md#relation-to-roc-and-pce).
+The mathematical dependency direction is from this repository to PCE:
+this repository develops and formally verifies the mathematics that
+PCE's witness forms turn into independently checkable certificates.
+There is no dependency from this repository back onto PCE's codebase.
+
+The formal instantiation theorems connecting the two are complete, in
+[`rocq/QPCEWitnessPredicates.v`](../rocq/QPCEWitnessPredicates.v) and
+[`rocq/QPCEInstantiation.v`](../rocq/QPCEInstantiation.v) — see also
+[`FOUNDATION.md`](FOUNDATION.md#why-a-third-repository-and-why-it-is-not-a-merger)
+and the diagram in the top-level [`README.md`](../README.md#relationship-to-roc-and-pce).
+This does not verify PCE's production implementation; see
+[`NON_CLAIMS.md`](NON_CLAIMS.md).

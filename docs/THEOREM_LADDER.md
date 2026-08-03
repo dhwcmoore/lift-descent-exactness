@@ -1,9 +1,13 @@
 # Theorem Ladder
 
 The initial sequence of results for the linear theory. Statements only —
-proofs belong in the Rocq development (`rocq/`, Phase 1+; see
-[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md)). Definitions
-referenced here are in [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md).
+the proofs are complete in the Rocq development (`rocq/`; see
+[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md) for the phase
+in which each result was formalised). Definitions referenced here are in
+[`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md). The mathematical
+correspondences with ROC and PCE that build on this ladder are stated
+separately in [`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md) and
+[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md).
 
 ## R0 — Repair-fibre normal form
 

@@ -5,9 +5,9 @@
 This repository does not prove that any physical, geometric, evidential,
 or computational system has been represented correctly by $D$, $r$, and
 $L$. This repository takes an exact algebraic presentation as its
-starting point and develops the consequences that follow from it. At
-Phase 0 those consequences are stated as a theorem programme; formal
-proofs are not yet present. Whether a regional layout, sensor comparison, PDE
+starting point and develops the consequences that follow from it. Those
+consequences are now formally proved in the Rocq development (`rocq/`);
+see [`THEOREM_LADDER.md`](THEOREM_LADDER.md). Whether a regional layout, sensor comparison, PDE
 discretisation, or other domain presentation is faithfully captured by
 $(U, V, W, D, r, L)$ is a question for ROC where its regional
 construction applies, for a domain-specific adapter, or for another
@@ -32,22 +32,29 @@ The clean architecture:
 
 $$e \xrightarrow{\text{adapter}} (U, V, W, D, r, L),$$
 
-where $e$ is domain evidence. An admissibility structure can later be
-formalised abstractly as:
+where $e$ is domain evidence. This admissibility structure is now
+formalised abstractly in [`rocq/QAdmissibilityGate.v`](../rocq/QAdmissibilityGate.v)
+as:
 
 - a type of evidence packages $E$;
 - a predicate $\mathrm{Admissible} : E \to \mathrm{Prop}$;
-- a type of positive witnesses;
-- a type of negative witnesses;
-- a compiler $\alpha : E \to \mathrm{Instance}$;
-- a soundness relation explaining what the compiled instance means.
+- a type of positive witnesses and a type of negative witnesses;
+- soundness of each witness type with respect to $\mathrm{Admissible}$.
 
-The core linear theory should prove
+Deliberately absent: a compiler $\alpha : E \to \mathrm{Instance}$. The
+gate takes evidence $e$ and the algebraic instance $(D, r, L)$ as
+independent parameters and proves soundness of their composition; it
+does not itself certify that a particular $(D, r, L)$ was correctly
+constructed from $e$ — that remains a domain-adapter question, outside
+this repository.
 
-$$\mathrm{Admissible}(e) \Rightarrow \text{one of Obstructed, Underdetermined, Exact}.$$
+The core linear theory proves
 
-It should not decide what admissibility means for every domain. That
-keeps geometry and algebra distinct.
+$$\mathrm{Admissible}(e) \Rightarrow \text{one of Obstructed, Underdetermined, Exact}$$
+
+in [`rocq/QPCEInstantiation.v`](../rocq/QPCEInstantiation.v). It does not
+decide what admissibility means for every domain. That keeps geometry
+and algebra distinct.
 
 ## What should not go into this repository
 
