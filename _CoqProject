@@ -30,3 +30,4 @@ rocq/QUniversalExactQuotient.v
 rocq/QCanonicalValue.v
 rocq/QLinearIsomorphism.v
 rocq/QPresentationMorphism.v
+rocq/QLiftObstructionTransport.v
