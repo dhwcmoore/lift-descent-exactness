@@ -1,13 +1,15 @@
 # Theorem Ladder
 
-The initial sequence of results for the linear theory. Statements only —
-the proofs are complete in the Rocq development (`rocq/`; see
+The sequence of results for the linear theory. Statements only — the
+proofs of R0-R12 are complete in the Rocq development (`rocq/`; see
 [`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md) for the phase
 in which each result was formalised). Definitions referenced here are in
-[`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md). The mathematical
-correspondences with ROC and PCE that build on this ladder are stated
-separately in [`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md) and
-[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md).
+[`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md). R11 and R12 are the
+mathematical correspondences with ROC and PCE, detailed further in
+[`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md) and
+[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md). R13-R16 are **planned
+for Phase 7** and are not yet proved; see
+[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md).
 
 ## R0 — Repair-fibre normal form
 
@@ -103,3 +105,72 @@ realisability, reflects realisability, preserves claim exactness, and
 reflects claim exactness. This generalises ROC's N0 and E0 results to
 both obstruction axes — see
 [`PRESENTATION_MORPHISMS.md`](PRESENTATION_MORPHISMS.md).
+
+## R11 — ROC cochain/lifting instantiation
+
+For a finite cochain presentation $U = C^0$, $V = C^1$, $D = \delta^0$,
+with the zero-dimensional claim space $W = 0$:
+
+$$\text{ROC repairable}(\delta^0, r) \iff \text{lifting-obstruction zero}(\delta^0, r),$$
+
+$$\text{ROC cycle separator}(\delta^0, r, y) \iff \text{separator witness}(\delta^0, r, y).$$
+
+Descent is automatic for the zero claim, so only two operational
+outcomes remain: Exact (a cochain repair exists) and Obstructed (a
+separator proves none exists) — see
+[`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md).
+
+## R12 — Admissibility-gated PCE witness instantiation
+
+An abstract admissibility gate on evidence $e$, composed with PCE's
+three algebraic witness forms (exact, underdetermined, obstructed —
+matching R3-R5), yields the nested classification
+
+$$\text{GatedInadmissible} \quad\text{or}\quad \text{GatedAdmissible}(v)$$
+
+for $v$ one of Obstructed, Underdetermined, Exact — never a flat
+four-constructor verdict. In the exact case the claimed value is the
+unique canonical value of R3 — see
+[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md).
+
+## Phase 7 (planned)
+
+The following results are proposed, not proved. They are stated here to
+fix the intended shape of the Phase 7 ladder before any implementation
+begins — see [`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md).
+
+## R13 — Packed evidence-to-instance construction *(planned, Phase 7)*
+
+A dependent package representing a finite rational instance whose
+dimensions are part of the value, together with a partial adapter
+
+$$\alpha : E \to \operatorname{option}(\operatorname{PackedInstance}).$$
+
+`Some I` would mean the adapter accepted the evidence and constructed
+$I$; `None` would mean the adapter rejected the evidence before linear
+classification. `None` must not be interpreted as an algebraic
+obstruction.
+
+## R14 — Adapter-gate coherence *(planned, Phase 7)*
+
+$$\operatorname{Admissible}(e) \iff \exists I,\ \alpha(e) = \operatorname{Some}(I).$$
+
+Positive gate witnesses would imply successful construction; negative
+gate witnesses would imply rejection.
+
+## R15 — Accepted-evidence classification *(planned, Phase 7)*
+
+If $\alpha(e) = \operatorname{Some}(I)$ under valid positive gate
+evidence, the R12 gated classification would apply to $I$ and yield
+exactly one of GatedAdmissible VerdictObstructed, GatedAdmissible
+VerdictUnderdetermined, GatedAdmissible VerdictExact — never
+GatedInadmissible. A negative gate witness would yield GatedInadmissible
+without constructing or classifying any instance.
+
+## R16 — Adapter-relative assurance *(planned, Phase 7)*
+
+$$\alpha(e) = \operatorname{Some}(I) \Longrightarrow \operatorname{Represents}(e, I),$$
+
+relative to a declared $\operatorname{Represents}$ relation. This must
+not be read as proving physical truth, sensor calibration, evidence
+completeness, unique model correctness, or real-world safety.

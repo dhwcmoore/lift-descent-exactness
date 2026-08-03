@@ -36,6 +36,28 @@ composed result, proved in
 outcome `GatedInadmissible` or `GatedAdmissible` of one of Obstructed,
 Underdetermined, Exact — never a flat four-constructor verdict.
 
+## What these modules do not construct
+
+`QAdmissibilityGate.v` formalises the abstract gate predicate and
+witness soundness. `QPCEWitnessPredicates.v` formalises the three
+algebraic witness forms — exact, underdetermined, obstructed.
+`QPCEInstantiation.v` composes the two into the gated witness
+classification. None of these modules constructs an algebraic instance
+$(D, r, L)$ from evidence $e$; all three take $(D, r, L)$ as an
+independent parameter, exactly as PCE itself does at the boundary
+described above.
+
+Phase 7 is planned to introduce a separate, generic partial adapter
+
+$$\alpha : E \to \operatorname{option}(\operatorname{PackedInstance})$$
+
+and prove its coherence with `AdmissibilityGate` (see
+[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md) and
+[`NON_CLAIMS.md`](NON_CLAIMS.md)). That theory will not correspond to
+PCE's production Python adapter or verifier; it formalises the
+mathematical shape of the passage only, not any particular
+implementation of it.
+
 ## Dependency direction
 
 The mathematical dependency direction is from this repository to PCE:

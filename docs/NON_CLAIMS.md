@@ -56,6 +56,33 @@ in [`rocq/QPCEInstantiation.v`](../rocq/QPCEInstantiation.v). It does not
 decide what admissibility means for every domain. That keeps geometry
 and algebra distinct.
 
+## The planned Phase 7 adapter boundary
+
+Phase 7 is planned to formalise a generic, abstract passage from
+evidence to instance:
+
+$$\alpha : E \to \operatorname{option}(\operatorname{PackedInstance}).$$
+
+It may prove a soundness theorem of the form
+
+$$\alpha(e) = \operatorname{Some}(I) \Longrightarrow \operatorname{Represents}(e, I),$$
+
+but only relative to a declared $\operatorname{Represents}$ relation
+that is itself part of the adapter's stated contract. Such a theorem
+must not be read as proving:
+
+- physical truth of the evidence;
+- sensor calibration;
+- evidence completeness;
+- that the declared model is the uniquely correct model;
+- real-world safety;
+- that algebraic exactness is natural or representation-independent.
+
+This generic adapter theory says nothing about aircraft, receivers,
+timestamps, or any other concrete evidence format. It is distinct from
+any domain-specific adapter, which remains outside this repository —
+see below.
+
 ## What should not go into this repository
 
 - Stone Soup
@@ -66,7 +93,9 @@ and algebra distinct.
 - SHA-256 digests
 - command-line interfaces
 - provenance graph rules
-- application adapters
+- domain-specific adapters, ingestion code, datasets, and production
+  adapter implementations (the generic abstract adapter theory itself
+  is planned for Phase 7 — see above)
 - commercial use cases
 - domain-specific admissibility policies
 

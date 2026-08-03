@@ -534,7 +534,7 @@ The founding documents explain the mathematical and architectural programme:
 * [`docs/PRESENTATION_MORPHISMS.md`](docs/PRESENTATION_MORPHISMS.md) - invertible and noninvertible transformations;
 * [`docs/ROC_INSTANTIATION.md`](docs/ROC_INSTANTIATION.md) - ROC's lifting interpretation;
 * [`docs/PCE_INSTANTIATION.md`](docs/PCE_INSTANTIATION.md) - PCE witness interpretation;
-* [`docs/FUTURE_GENERALISATIONS.md`](docs/FUTURE_GENERALISATIONS.md) - wider abstraction beyond finite rational vector spaces.
+* [`docs/FUTURE_GENERALISATIONS.md`](docs/FUTURE_GENERALISATIONS.md) - the development-phase sequence, including the planned Phase 7 adapter programme and Phase 8 wider abstraction.
 
 The Rocq files are the formal mathematical source of truth.
 
@@ -557,7 +557,14 @@ This repository does not inherit either applied codebase and has no circular dep
 
 ## Future direction
 
-The next mathematical question is which parts of the finite rational development survive in wider settings, including:
+```text
+Phase 7  Evidence-to-instance adapters and public demonstrator
+Phase 8  Modules, abelian categories, and wider abstraction
+```
+
+**Phase 7 is planned, not implemented.** Phases 1-6 begin from an already constructed instance (U,V,W,D,r,L). Phase 7 will formalise the partial, auditable passage from evidence (e) to that instance, and its coherence with the existing admissibility gate. A public distributed-localisation demonstrator, built on multi-receiver timing observations, is proposed only as motivation and future applied work in a separate sibling repository — no dataset has been downloaded or processed here.
+
+**Phase 8**, deferred behind Phase 7, asks which parts of the finite rational development survive in wider settings, including:
 
 * modules over a ring;
 * abelian categories;

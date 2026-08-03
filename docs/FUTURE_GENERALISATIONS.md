@@ -5,9 +5,9 @@
 **Phases 1-6 are complete.** The Rocq development (`rocq/`) contains 41
 source files proving every result described below; see the top-level
 [`README.md`](../README.md#status) for the current inventory and
-[`THEOREM_LADDER.md`](THEOREM_LADDER.md) for the R0-R10 statements.
-Phase 7 is the current open question — see "Why generalisation waits"
-below.
+[`THEOREM_LADDER.md`](THEOREM_LADDER.md) for the R0-R12 statements.
+**Phase 7 — evidence-to-instance adapters — is planned next.** Wider
+abstraction has moved to Phase 8; see "Why generalisation waits" below.
 
 **Phase 0 — Founding documents.** Charter, exact definitions, non-claims,
 theorem ladder, relation to ROC and PCE. No implementation migration.
@@ -50,8 +50,33 @@ implementations of either repository — see
 [`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md) and
 [`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md). *(Complete.)*
 
-**Phase 7 — Wider abstraction.** Only now consider modules over a ring
-and abelian categories. *(Not started — the next open question.)*
+**Phase 7 — Evidence-to-instance adapters and public demonstrator.**
+Formalise the partial, auditable passage
+
+$$e \xrightarrow{\alpha} (U, V, W, D, r, L),$$
+
+its coherence with `AdmissibilityGate`, and the resulting classification
+of accepted evidence (R13-R16; see
+[`THEOREM_LADDER.md`](THEOREM_LADDER.md)). The abstract adapter theory
+belongs in this repository. A concrete public demonstrator, built on
+multi-receiver distributed timing observations, is proposed as a
+separate sibling repository — not as code or data in this one.
+*(Planned — not yet implemented.)*
+
+### Phase 7 unit sequence (planned)
+
+```text
+Unit 35  QPackedLinearInstance.v
+Unit 36  QEvidenceAdapter.v
+Unit 37  QAdapterAdmissibility.v
+Unit 38  QAdapterPCEComposition.v
+```
+
+None of these units exists yet. This list records the proposed sequence
+only; it authorises no implementation.
+
+**Phase 8 — Wider abstraction.** Only after Phase 7 consider modules
+over a ring and abelian categories. *(Future — not started.)*
 
 ## Why generalisation waits
 
@@ -61,10 +86,10 @@ Generalisation should be a response to a theorem forcing the question —
 for example, R2's use of finite-dimensional extension (see
 [`THEOREM_LADDER.md`](THEOREM_LADDER.md#r2--descent-exact-sequence-and-factorisation-equivalence))
 is exactly the kind of step that may not survive unchanged in a module or
-abelian-category setting, and is a natural place Phase 7 will need to
+abelian-category setting, and is a natural place Phase 8 will need to
 revisit.
 
-Candidate settings for Phase 7, in roughly increasing generality:
+Candidate settings for Phase 8, in roughly increasing generality:
 
 - modules over a ring;
 - abelian categories;

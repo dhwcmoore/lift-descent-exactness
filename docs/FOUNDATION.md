@@ -22,6 +22,24 @@ consequences are now formally proved in the Rocq development (`rocq/`);
 see [`THEOREM_LADDER.md`](THEOREM_LADDER.md) for the statements.
 (Expanded in [`NON_CLAIMS.md`](NON_CLAIMS.md).)
 
+## The evidence-to-instance boundary
+
+Phases 1-6 begin from an already constructed instance
+$(U, V, W, D, r, L)$ and prove what follows from it. They do not address
+how that instance was constructed from concrete evidence $e$:
+
+$$e \longrightarrow (U, V, W, D, r, L).$$
+
+Phase 7 is planned to study that passage: partial, auditable
+construction of an instance from evidence, and its coherence with the
+existing admissibility gate. Even a theorem that this construction is
+correct relative to a declared representation relation remains a claim
+about the adapter's fidelity to its own stated contract — not a claim
+that the evidence is physically complete, truthful, correctly
+calibrated, or sufficient for every real-world purpose. See
+[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md) and
+[`NON_CLAIMS.md`](NON_CLAIMS.md).
+
 ## Why a third repository, and why it is not a merger
 
 `regional-obstruction-calculus` (ROC) answers one question: can a
