@@ -36,3 +36,4 @@ rocq/QIsomorphicTransport.v
 rocq/QPresentationPreservation.v
 rocq/QPresentationReflection.v
 rocq/QPresentationSafety.v
+rocq/QCochainInstantiation.v
