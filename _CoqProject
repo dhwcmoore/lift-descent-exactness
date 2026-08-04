@@ -41,3 +41,4 @@ rocq/QAdmissibilityGate.v
 rocq/QPCEWitnessPredicates.v
 rocq/QPCEInstantiation.v
 rocq/QPackedLinearInstance.v
+rocq/QEvidenceAdapter.v
