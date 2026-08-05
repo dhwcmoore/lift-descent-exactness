@@ -7,8 +7,10 @@ in which each result was formalised). Definitions referenced here are in
 [`MATHEMATICAL_SCOPE.md`](MATHEMATICAL_SCOPE.md). R11 and R12 are the
 mathematical correspondences with ROC and PCE, detailed further in
 [`ROC_INSTANTIATION.md`](ROC_INSTANTIATION.md) and
-[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md). R13-R16 are **planned
-for Phase 7** and are not yet proved; see
+[`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md). R13-R16 belong to
+**Phase 7** and are at differing stages: R13 is formalised, R16's
+generic obligation is formalised, and R14-R15 remain planned. Each
+heading below records its own status; see
 [`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md).
 
 ## R0 — Repair-fibre normal form
@@ -133,30 +135,82 @@ four-constructor verdict. In the exact case the claimed value is the
 unique canonical value of R3 — see
 [`PCE_INSTANTIATION.md`](PCE_INSTANTIATION.md).
 
-## Phase 7 (planned)
+## Phase 7 (in progress)
 
-The following results are proposed, not proved. They are stated here to
-fix the intended shape of the Phase 7 ladder before any implementation
-begins — see [`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md).
+The results below were stated to fix the intended shape of the Phase 7
+ladder before implementation began, and implementation has since
+started. R13's packed instance and partial adapter are formalised, and
+R16's assurance obligation is formalised as a field every adapter must
+discharge. R14 and R15 remain proposed rather than proved. Each heading
+carries its own status — see
+[`FUTURE_GENERALISATIONS.md`](FUTURE_GENERALISATIONS.md).
 
-## R13 — Packed evidence-to-instance construction *(planned, Phase 7)*
+## R13 — Packed evidence-to-instance construction *(formalised, Phase 7)*
 
 A dependent package representing a finite rational instance whose
 dimensions are part of the value, together with a partial adapter
 
 $$\alpha : E \to \operatorname{option}(\operatorname{PackedInstance}).$$
 
-`Some I` would mean the adapter accepted the evidence and constructed
-$I$; `None` would mean the adapter rejected the evidence before linear
-classification. `None` must not be interpreted as an algebraic
-obstruction.
+`Some I` means the adapter produced the packed instance $I$ from the
+evidence. `None` means only that the adapter produced no packed
+instance. It does not by itself imply that the evidence is
+inadmissible, that an algebraic obstruction exists, that the evidence is
+false or defective, or that no adequate representation could exist.
+
+The gate runs first and the adapter second, so the two ways of failing
+stay distinct: evidence the gate rejects is inadmissible and is never
+adapted, whereas evidence the gate accepts may still yield `None`, which
+is adapter construction failure. Only `Some I` reaches classification.
+Neither failure is an algebraic verdict about $I$, because in neither
+case does an $I$ exist to classify.
 
 ## R14 — Adapter-gate coherence *(planned, Phase 7)*
 
+Adapter success and gate admissibility are related by two separate
+properties. They are deliberately not stated as a single equivalence,
+because that equivalence would erase a state the architecture has to
+keep expressible — see the construction-failure paragraph below.
+
+**R14a — Success-soundness (required).**
+
+$$\alpha(e) = \operatorname{Some}(I) \Longrightarrow \operatorname{Admissible}(e).$$
+
+An adapter must not successfully construct an instance from evidence
+that the relevant gate rejects. This is the property the generic adapter
+theory requires of every adapter.
+
+**R14b — Totality on admissible evidence (optional).**
+
+$$\operatorname{Admissible}(e) \Longrightarrow \exists I,\ \alpha(e) = \operatorname{Some}(I).$$
+
+A concrete adapter may prove this against its own gate, but the generic
+theory must not require it, and no result below may assume it silently.
+
+**Recovered equivalence (derived, not the contract).** When an adapter
+satisfies R14a and R14b together,
+
 $$\operatorname{Admissible}(e) \iff \exists I,\ \alpha(e) = \operatorname{Some}(I).$$
 
-Positive gate witnesses would imply successful construction; negative
-gate witnesses would imply rejection.
+This is a theorem about that class of adapters. It is not the generic
+adapter contract, and it must not be assumed when reasoning about
+adapters in general.
+
+**Construction failure is a distinct state.** Leaving R14b optional
+keeps
+
+$$\operatorname{Admissible}(e) \ \land\ \alpha(e) = \operatorname{None}$$
+
+expressible: the gate accepted the evidence, and the adapter still
+produced no instance. This is *adapter construction failure*. It is not
+inadmissibility, not an obstructed algebraic instance, not a claim that
+the evidence is false, and not a proof that no adequate representation
+of that evidence exists. Collapsing it into inadmissibility is exactly
+what a mandatory equivalence would do.
+
+**Witness consequences.** Under R14a, a negative gate witness for $e$
+implies $\alpha(e) = \operatorname{None}$. Under R14b, a positive gate
+witness for $e$ implies that some packed instance is produced.
 
 ## R15 — Accepted-evidence classification *(planned, Phase 7)*
 
@@ -167,10 +221,17 @@ VerdictUnderdetermined, GatedAdmissible VerdictExact — never
 GatedInadmissible. A negative gate witness would yield GatedInadmissible
 without constructing or classifying any instance.
 
-## R16 — Adapter-relative assurance *(planned, Phase 7)*
+## R16 — Adapter-relative assurance *(interface formalised, Phase 7)*
 
 $$\alpha(e) = \operatorname{Some}(I) \Longrightarrow \operatorname{Represents}(e, I),$$
 
 relative to a declared $\operatorname{Represents}$ relation. This must
 not be read as proving physical truth, sensor calibration, evidence
 completeness, unique model correctness, or real-world safety.
+
+The generic development formalises this as an obligation rather than as
+a result it discharges: it is a field every adapter carries, and each
+concrete adapter must supply the proof when the adapter is constructed.
+The generic theory has not proved the implication for any particular
+adapter, and could not, since $\operatorname{Represents}$ is whatever
+that adapter declares it to be.
